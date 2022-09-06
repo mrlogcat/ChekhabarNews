@@ -1,6 +1,6 @@
 package com.example.khabarnews.api
 
-import com.example.khabarnews.NewsResponse
+import com.example.khabarnews.models.NewsResponse
 import com.example.khabarnews.utils.Constants
 import retrofit2.Response
 import retrofit2.http.GET
@@ -11,7 +11,7 @@ interface NewsApi {
     suspend fun getBreakingNews(
         @Query("country") country: String="us",
         @Query("page") page: Int=1,
-        @Query("apiKey") apikey: String=Constants.API_KEY)
+        @Query("apiKey") apikey: String=Constants.API_KEY):Response<NewsResponse>
 
     @GET("everything")
     suspend fun searchForNews(
