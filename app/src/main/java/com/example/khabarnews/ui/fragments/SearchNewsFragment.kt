@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.khabarnews.NewsViewModel
@@ -33,6 +34,14 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             viewModel = (activity as NewsActivity).viewModel
             findViews(view)
             setupRecyclerView()
+
+            searchAdapter.setOnItemClickListener {
+                val bundle=Bundle()
+                bundle.putSerializable("article",it)
+
+                findNavController().navigate(R.id.action_searchNewsFragment_to_articleFragment,bundle)
+            }
+
 
             var job:Job?=null
             edtSearch.addTextChangedListener {editable->

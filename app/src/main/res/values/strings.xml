@@ -3,4 +3,7 @@
     <string name="breakingNews">خبرهای مهم</string>
     <string name="savedNews">ذخیره شده ها</string>
     <string name="searchNews">جستجوی اخبار</string>
+    <string name="saved_msg"> با موفقیت ذخیره شد!</string>
+    <string name="deleted_msg"> با موفقیت حذف شد!</string>
+    <string name="undo">بازگشت</string>
 </resources>
