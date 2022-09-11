@@ -16,7 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
     private lateinit var viewModel: NewsViewModel
-    private val args :ArticleFragmentArgs by navArgs()
+    private val args : ArticleFragmentArgs by navArgs()
     private lateinit var webView:WebView
     private lateinit var fab:FloatingActionButton
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
 
         webView.apply {
             webViewClient= WebViewClient()
-            loadUrl(article.url)
+            loadUrl(article.url!!)
         }
 
         fab.setOnClickListener {

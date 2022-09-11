@@ -8,11 +8,14 @@ import com.example.khabarnews.models.Article
 import com.example.khabarnews.models.NewsResponse
 import com.example.khabarnews.repository.NewsRepository
 import com.example.khabarnews.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import javax.inject.Inject
 import kotlinx.coroutines.Job as Job1
 
-class NewsViewModel(private val newsRepository: NewsRepository):ViewModel() {
+@HiltViewModel
+class NewsViewModel @Inject constructor(private val newsRepository: NewsRepository):ViewModel() {
     val breakingNewsLiveData:MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     private var breakingNewsPage=1
 

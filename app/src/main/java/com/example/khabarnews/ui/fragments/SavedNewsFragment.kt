@@ -22,6 +22,7 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as NewsActivity).viewModel
         findViews(view)
+        setupRecyclerView()
 
         savedNewsAdapter.setOnItemClickListener {
             val bundle=Bundle()
@@ -54,7 +55,7 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
                 val position=viewHolder.adapterPosition
                 val article= savedNewsAdapter.differ.currentList[position]
                 viewModel.deleteArticle(article)
-                Snackbar.make(view,R.string.saved_msg,Snackbar.LENGTH_LONG).apply {
+                Snackbar.make(view,R.string.deleted_msg,Snackbar.LENGTH_LONG).apply {
                     setAction(R.string.undo) {
                         viewModel.saveArticle(article)
                     }

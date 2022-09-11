@@ -5,7 +5,7 @@ import androidx.room.TypeConverter
 class Converters {
     @TypeConverter
     fun fromSource(source: com.example.khabarnews.models.Source):String{
-        return source.name
+        return source.name!!
     }
 
     @TypeConverter
