@@ -1,6 +1,6 @@
-package com.example.khabarnews.api
+package com.example.khabarnews.network.api
 
-import com.example.khabarnews.models.NewsResponse
+import com.example.khabarnews.network.dataModel.NewsResponse
 import com.example.khabarnews.utils.Constants
 import retrofit2.Response
 import retrofit2.http.GET

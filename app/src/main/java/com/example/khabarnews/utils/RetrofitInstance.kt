@@ -1,6 +1,6 @@
 package com.example.khabarnews.utils
 
-import com.example.khabarnews.api.NewsApi
+import com.example.khabarnews.network.api.NewsApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

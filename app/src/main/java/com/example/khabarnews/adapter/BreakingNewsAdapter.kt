@@ -5,29 +5,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.khabarnews.models.Article
+import com.example.khabarnews.network.dataModel.Article
 import com.example.khabarnews.R
 
-class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
+class BreakingNewsAdapter : PagingDataAdapter<Article,BreakingNewsAdapter.ArticleViewHolder>(differCallBack) {
 
 
-    val differCallBack=object : DiffUtil.ItemCallback<Article>(){
-        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
-           return oldItem.url==newItem.url
+    companion object{
+        val differCallBack=object : DiffUtil.ItemCallback<Article>(){
+            override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+                return oldItem.url==newItem.url
+            }
+
+            override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+                return oldItem==newItem
+            }
+
         }
-
-        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
-            return oldItem==newItem
-        }
-
     }
 
 
-    val differ=AsyncListDiffer(this,differCallBack)
 
 
     inner class  ArticleViewHolder(itemView:View): RecyclerView.ViewHolder(itemView){
@@ -46,7 +47,8 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        val article=differ.currentList[position]
+//        val article=differ.currentList[position]
+        val article=getItem(position)!!
         holder.apply {
             Glide.with(holder.itemView).load(article.urlToImage).into(holder.ivArticle)
             tvSource.text = article.source?.name
@@ -69,7 +71,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         onItemClickListener=listener
     }
 
-    override fun getItemCount(): Int {
-       return differ.currentList.size
-    }
+//    override fun getItemCount(): Int {
+//       return differ.currentList.size
+//    }
 }

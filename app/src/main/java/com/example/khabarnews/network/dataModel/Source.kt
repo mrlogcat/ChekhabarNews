@@ -1,4 +1,4 @@
-package com.example.khabarnews.models
+package com.example.khabarnews.network.dataModel
 
 import java.io.Serializable
 

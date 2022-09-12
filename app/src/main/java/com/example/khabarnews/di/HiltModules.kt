@@ -2,7 +2,7 @@ package com.example.khabarnews.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.khabarnews.api.NewsApi
+import com.example.khabarnews.network.api.NewsApi
 import com.example.khabarnews.db.ArticleDao
 import com.example.khabarnews.db.ArticleDataBase
 import com.example.khabarnews.repository.NewsRepository

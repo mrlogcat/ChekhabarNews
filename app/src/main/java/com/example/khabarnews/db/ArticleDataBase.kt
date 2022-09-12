@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.khabarnews.models.Article
+import com.example.khabarnews.network.dataModel.Article
 
 @Database(entities = [Article::class], version = 1,exportSchema = false )
 @TypeConverters(Converters::class)

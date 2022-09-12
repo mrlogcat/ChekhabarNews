@@ -1,12 +1,10 @@
 package com.example.khabarnews.repository
 
 import androidx.lifecycle.LiveData
-import com.example.khabarnews.api.NewsApi
+import com.example.khabarnews.network.api.NewsApi
 import com.example.khabarnews.db.ArticleDao
-import com.example.khabarnews.db.ArticleDataBase
-import com.example.khabarnews.models.Article
-import com.example.khabarnews.models.NewsResponse
-import com.example.khabarnews.utils.RetrofitInstance
+import com.example.khabarnews.network.dataModel.Article
+import com.example.khabarnews.network.dataModel.NewsResponse
 import retrofit2.Response
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.example.khabarnews.models
+package com.example.khabarnews.network.dataModel
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
