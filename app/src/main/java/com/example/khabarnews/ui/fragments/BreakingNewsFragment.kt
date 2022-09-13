@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.khabarnews.NewsViewModel
+import com.example.khabarnews.viewmodel.NewsViewModel
 import com.example.khabarnews.R
 import com.example.khabarnews.adapter.BreakingNewsAdapter
 import com.example.khabarnews.ui.NewsActivity
@@ -20,7 +20,6 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     lateinit var breakingNewsAdapter: BreakingNewsAdapter
     lateinit var paginationProgressBar: ProgressBar
     lateinit var rv: RecyclerView
-    private val TAG="BreakingNewsFragment"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,6 +34,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
             findNavController().navigate(R.id.action_breakingNewsFragment_to_articleFragment,bundle)
         }
+
 //        viewModel.breakingNewsLiveData.observe(viewLifecycleOwner) {response->
 //            when(response){
 //                is Resource.Success -> {

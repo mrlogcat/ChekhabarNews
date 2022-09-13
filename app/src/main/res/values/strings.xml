@@ -6,4 +6,5 @@
     <string name="saved_msg"> با موفقیت ذخیره شد!</string>
     <string name="deleted_msg"> با موفقیت حذف شد!</string>
     <string name="undo">بازگشت</string>
+    <string name="search">جستجو...</string>
 </resources>

@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.khabarnews.NewsViewModel
+import com.example.khabarnews.viewmodel.NewsViewModel
 import com.example.khabarnews.R
 import com.example.khabarnews.adapter.BreakingNewsAdapter
 import com.example.khabarnews.ui.NewsActivity
@@ -25,7 +25,6 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         lateinit var searchAdapter: BreakingNewsAdapter
         lateinit var paginationProgressBar: ProgressBar
         lateinit var rv: RecyclerView
-        private val TAG="SearchNewsFragment"
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)

@@ -7,9 +7,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.khabarnews.NewsViewModel
+import com.example.khabarnews.viewmodel.NewsViewModel
 import com.example.khabarnews.R
-import com.example.khabarnews.adapter.BreakingNewsAdapter
 import com.example.khabarnews.adapter.SavedNewsAdapter
 import com.example.khabarnews.ui.NewsActivity
 import com.google.android.material.snackbar.Snackbar
@@ -21,9 +20,10 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as NewsActivity).viewModel
         findViews(view)
         setupRecyclerView()
+        viewModel = (activity as NewsActivity).viewModel
+
 
         savedBreakingNewsAdapter.setOnItemClickListener {
             val bundle=Bundle()

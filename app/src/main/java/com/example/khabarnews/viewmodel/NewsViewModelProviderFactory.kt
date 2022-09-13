@@ -1,4 +1,4 @@
-package com.example.khabarnews
+package com.example.khabarnews.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

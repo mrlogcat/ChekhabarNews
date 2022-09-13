@@ -12,8 +12,6 @@
             android:id="@+id/action_breakingNewsFragment_to_articleFragment"
             app:destination="@id/articleFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_in_left"
-            app:popEnterAnim="@anim/slide_out_left"
             app:popExitAnim="@anim/slide_out_right"
             />
         <action

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.khabarnews.NewsViewModel
+import com.example.khabarnews.viewmodel.NewsViewModel
 import com.example.khabarnews.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
