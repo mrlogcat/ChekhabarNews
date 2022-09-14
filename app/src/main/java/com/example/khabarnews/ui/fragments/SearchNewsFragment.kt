@@ -1,6 +1,8 @@
 package com.example.khabarnews.ui.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -20,6 +22,7 @@ import com.example.khabarnews.utils.Constants
 import kotlinx.coroutines.*
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
+    private lateinit var textWatcher: TextWatcher
     lateinit var edtSearch: EditText
     lateinit var viewModel: NewsViewModel
         lateinit var searchAdapter: BreakingNewsAdapter
@@ -40,21 +43,36 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             }
 
 
+
+
+
+
             var job:Job?=null
-            edtSearch.addTextChangedListener {editable->
-                job?.cancel()
-                job= MainScope().launch {
-                    delay(Constants.SEARCH_NEWS_TIME_DELAY)
-                    editable?.let {
-                        if (editable.toString().isNotEmpty()){
-                            viewModel.setQuery(editable.toString())
-                            viewModel.searchList.observe(viewLifecycleOwner, Observer {
-                                searchAdapter.submitData(lifecycle,it)
-                            })
+            textWatcher=object : TextWatcher{
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(editable: Editable?) {
+                    job?.cancel()
+                    job= MainScope().launch {
+                        delay(Constants.SEARCH_NEWS_TIME_DELAY)
+                        editable?.let {
+                            if (editable.toString().isNotEmpty()){
+                                viewModel.setQuery(editable.toString())
+                            }
                         }
                     }
                 }
             }
+
+
+            viewModel.searchList.observe(viewLifecycleOwner, Observer {
+                searchAdapter.submitData(lifecycle,it)
+            })
+
 
 
             searchAdapter.addLoadStateListener { loadState ->
@@ -77,32 +95,18 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 }
             }
 
-
-
-
-
-// TODO: revert the changes
-//            viewModel.searchNewsLiveData.observe(viewLifecycleOwner) { response->
-//                when(response){
-//                    is Resource.Success -> {
-//                        hideProgressbar()
-//                        response.data?.let {
-//                            searchAdapter.differ.submitList(it.articles)
-//                        }
-//                    }
-//                    is Resource.Error ->{
-//                        hideProgressbar()
-//                        response.message?.let { message->
-//                            Log.e(TAG,"an error occurred : $message")
-//                        }
-//                    }
-//                    is Resource.Loading ->{
-//                        showProgressbar()
-//                    }
-//                }
-//            }
         }
 
+    override fun onResume() {
+        super.onResume()
+        edtSearch.addTextChangedListener(textWatcher)
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+//        edtSearch.removeTextChangedListener(textWatcher);
+    }
         private fun showProgressbar(){
             paginationProgressBar.visibility=View.VISIBLE
         }

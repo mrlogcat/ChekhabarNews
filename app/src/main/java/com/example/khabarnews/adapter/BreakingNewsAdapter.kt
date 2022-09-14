@@ -9,8 +9,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.khabarnews.network.dataModel.Article
 import com.example.khabarnews.R
+import com.example.khabarnews.network.dataModel.Article
 
 class BreakingNewsAdapter : PagingDataAdapter<Article,BreakingNewsAdapter.ArticleViewHolder>(differCallBack) {
 
@@ -54,7 +54,7 @@ class BreakingNewsAdapter : PagingDataAdapter<Article,BreakingNewsAdapter.Articl
             tvSource.text = article.source?.name
             tvTitle.text=article.title
             tvDesc.text=article.description
-            tvPublishedAt.text=article.publishedAt
+//            tvPublishedAt.text=article.pu
 
 
             holder.itemView.setOnClickListener{

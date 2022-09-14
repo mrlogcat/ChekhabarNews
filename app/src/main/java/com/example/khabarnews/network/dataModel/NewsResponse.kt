@@ -1,7 +1,8 @@
 package com.example.khabarnews.network.dataModel
 
 data class NewsResponse(
-    val articles: List<Article>,
+    val news: List<Article>,
+    val paginate: Paginate,
     val status: String,
     val totalResults: Int
 )

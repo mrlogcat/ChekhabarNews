@@ -10,8 +10,8 @@ import javax.inject.Inject
 
 class NewsRepository @Inject constructor (private val dao: ArticleDao,private val api: NewsApi){
 
-    suspend fun getBreakingNews(country : String,page:Int): Response<NewsResponse> {
-        return api.getBreakingNews(country,page)
+    suspend fun getBreakingNews(page:Int): Response<NewsResponse> {
+        return api.getBreakingNews(page)
     }
 
 

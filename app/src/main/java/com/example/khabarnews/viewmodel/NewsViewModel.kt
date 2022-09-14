@@ -33,7 +33,8 @@ class NewsViewModel @Inject constructor(private val repository: NewsRepository):
     }
 
 
-    val breakingNewsList=Pager(PagingConfig(pageSize = 10)){
+    val breakingNewsList=
+        Pager(PagingConfig(pageSize = 10)){
         BreakingNewsPagingSource(repository)
     }.liveData.cachedIn(viewModelScope)
 
@@ -91,6 +92,10 @@ class NewsViewModel @Inject constructor(private val repository: NewsRepository):
 
     fun getSavedNews(): LiveData<List<Article>> {
        return repository.getSavedNews()
+    }
+
+    suspend fun searchNews(q:String, page:Int): Response<NewsResponse> {
+       return repository.searchNews(q,page)
     }
 
     fun deleteArticle(article: Article) = viewModelScope.launch {

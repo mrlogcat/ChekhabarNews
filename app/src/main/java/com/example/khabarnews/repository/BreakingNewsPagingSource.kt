@@ -19,11 +19,11 @@ class BreakingNewsPagingSource @Inject constructor(private val repository: NewsR
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val page=params.key ?: 1
         return try {
-            val data=repository.getBreakingNews(page = page, country = "us")
+            val data=repository.getBreakingNews(page = page)
             LoadResult.Page(
-                data = data.body()?.articles!!,
+                data = data.body()?.news!!,
                 prevKey = if (page==1)null else page-1,
-                nextKey = if (data.body()?.articles?.isEmpty()!!) null else page+1
+                nextKey = if (data.body()?.news?.isEmpty()!!) null else page+1
             )
 
         }catch (e: Exception){
