@@ -1,4 +1,4 @@
-package com.example.khabarnews.viewmodel
+package com.example.khabarnews.ui.viewmodel
 
 import androidx.lifecycle.*
 import androidx.paging.*

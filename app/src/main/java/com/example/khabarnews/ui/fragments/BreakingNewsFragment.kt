@@ -10,28 +10,21 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.khabarnews.viewmodel.NewsViewModel
+import com.example.khabarnews.ui.viewmodel.NewsViewModel
 import com.example.khabarnews.R
 import com.example.khabarnews.adapter.BreakingNewsAdapter
 import com.example.khabarnews.ui.NewsActivity
 
-class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
-    lateinit var viewModel: NewsViewModel
+class BreakingNewsFragment : BaseFragment(R.layout.fragment_breaking_news) {
     lateinit var breakingNewsAdapter: BreakingNewsAdapter
     lateinit var paginationProgressBar: ProgressBar
     lateinit var rv: RecyclerView
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as NewsActivity).viewModel
-        findViews(view)
-        setupRecyclerView()
-
 
         breakingNewsAdapter.setOnItemClickListener {
             val bundle=Bundle()
             bundle.putSerializable("article",it)
-
             findNavController().navigate(R.id.action_breakingNewsFragment_to_articleFragment,bundle)
         }
 
@@ -56,9 +49,9 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 //        }
 
 
-        viewModel.breakingNewsList.observe(viewLifecycleOwner, Observer {
-            breakingNewsAdapter.submitData(lifecycle,it)
-        })
+        viewModel.breakingNewsList.observe(viewLifecycleOwner) {
+            breakingNewsAdapter.submitData(lifecycle, it)
+        }
 
 
         breakingNewsAdapter.addLoadStateListener { loadState ->
@@ -91,12 +84,12 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         paginationProgressBar.visibility=View.INVISIBLE
     }
 
-    private fun findViews(view: View) {
+    override fun findViews(view: View) {
         paginationProgressBar=view.findViewById(R.id.paginationProgressBar)
         rv= view.findViewById(R.id.rvBreakingNews)
     }
 
-    private fun setupRecyclerView(){
+    override fun setupViews(view: View) {
         breakingNewsAdapter= BreakingNewsAdapter()
         rv.apply {
             adapter=breakingNewsAdapter

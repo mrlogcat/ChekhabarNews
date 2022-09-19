@@ -7,23 +7,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.khabarnews.viewmodel.NewsViewModel
+import com.example.khabarnews.ui.viewmodel.NewsViewModel
 import com.example.khabarnews.R
 import com.example.khabarnews.adapter.SavedNewsAdapter
 import com.example.khabarnews.ui.NewsActivity
 import com.google.android.material.snackbar.Snackbar
 
-class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
-    lateinit var viewModel: NewsViewModel
+class SavedNewsFragment : BaseFragment(R.layout.fragment_saved_news) {
     lateinit var savedBreakingNewsAdapter: SavedNewsAdapter
     lateinit var rv: RecyclerView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        findViews(view)
-        setupRecyclerView()
-        viewModel = (activity as NewsActivity).viewModel
-
 
         savedBreakingNewsAdapter.setOnItemClickListener {
             val bundle=Bundle()
@@ -63,11 +58,11 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
         ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(rv)
     }
 
-    private fun findViews(view: View) {
+    override fun findViews(view: View) {
         rv=view.findViewById(R.id.rvSavedNews)
     }
 
-    private fun setupRecyclerView(){
+    override fun setupViews(view: View) {
         savedBreakingNewsAdapter= SavedNewsAdapter()
         rv.apply {
             adapter=savedBreakingNewsAdapter
