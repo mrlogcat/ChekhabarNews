@@ -19,4 +19,5 @@ abstract class BaseFragment(layoutId:Int) :Fragment(layoutId){
   abstract fun setupViews(view: View)
 
   abstract fun findViews(view: View);
+
 }
